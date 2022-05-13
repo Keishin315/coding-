@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+
+int main(){
+  int H,W;
+  cin>>H>>W;
+  int A[H][W]={0};
+  rep(i,H){
+    rep(j,W) cin>>A[i][j];
+  }
+  
+  int sumi[H]={0};
+  int sumj[W]={0};
+  rep(j,W) rep(i,H) sumj[j]+=A[i][j],sumi[i]+=A[i][j];
+  rep(i,H){
+    rep(j,W)A[i][j]=sumi[i]+sumj[j]-A[i][j];
+  }
+  rep(i,H){
+    rep(j,W) cout<<A[i][j]<<' ';
+    cout<<endl;
+  }
+  return 0;
+}
