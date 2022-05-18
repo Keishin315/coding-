@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+int N;
+string S[10000000];
+int T[10000000]={0};
+int main(){
+  cin>>N;
+  rep(i,N) cin>>S[i]>>T[i];
+  map<string,int> Ori;
+  rep(i,N){
+    Ori[S[i]]=0;
+  }
+  rep(i,N){
+    if(Ori[S[i]]==0) Ori[S[i]]=T[i];
+  }
+  int max=0;
+  rep(i,N){
+    if(Ori[S[max]]<Ori[S[i]]) max = i;
+  }
+  
+  cout<<(max+1);
+  return 0;
+  
+}
