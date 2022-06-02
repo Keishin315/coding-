@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+string s(int n){
+  string x="";
+  if(n==1) return "1";
+  else{
+    int a=n;
+    while(a){
+      x=to_string(a%10)+x;
+      a/=10;
+    }
+    return s(n-1)+x+s(n-1);
+  }
+}
+
+int main(){
+  int N;
+  cin>>N;
+  cout<<s(N);
+  return 0;
+}
