@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+
+int main(){
+  int x1,y1,x2,y2;
+  cin>>x1>>y1>>x2>>y2;
+  
+  vector<vector<int>>xy1(8,vector<int>(2));
+  vector<vector<int>>xy2(8,vector<int>(2));
+  
+  xy1[0]={x1+2,y1+1};
+  xy1[1]={x1+1,y1+2};
+  xy1[2]={x1-2,y1+1};
+  xy1[3]={x1+1,y1-2};
+  xy1[4]={x1-2,y1-1};
+  xy1[5]={x1-1,y1+2};
+  xy1[6]={x1-1,y1-2};
+  xy1[7]={x1+2,y1-1};
+  
+  xy2[0]={x2+2,y2+1};
+  xy2[1]={x2+1,y2+2};
+  xy2[2]={x2-2,y2+1};
+  xy2[3]={x2+1,y2-2};
+  xy2[4]={x2-2,y2-1};
+  xy2[5]={x2-1,y2+2};
+  xy2[6]={x2-1,y2-2};
+  xy2[7]={x2+2,y2-1};
+  
+  bool flag=false;
+  rep(i,8){
+    rep(j,8){
+      if(xy1[i]==xy2[j]) flag=true;
+    }
+  }
+  
+  string ans="No";
+  
+  if(flag) ans="Yes";
+  
+  cout<<ans;
+  
+  return 0;
+}
