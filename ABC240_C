@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+
+int main(){
+  int N,X;
+  cin>>N>>X;
+  int a[N+1];
+  int b[N+1];
+  for(int i=1;i<N+1;i++) cin>>a[i]>>b[i];
+  bool dp[N+1][1000000]={false};
+  dp[1][a[1]]=true;
+  dp[1][b[1]]=true;
+  for(int n=1;n<N;n++){
+    rep(x,X+1){
+      dp[n+1][x+a[n+1]]=dp[n][x] or dp[n+1][x+a[n+1]];
+      dp[n+1][x+b[n+1]]=dp[n][x] or dp[n+1][x+b[n+1]];
+    }
+  }
+  string ans="No";
+  if(dp[N][X]) ans="Yes";
+  cout<<ans;
+  return 0;
+}
