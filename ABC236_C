@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+
+int main(){
+  int N,M;
+  cin>>N>>M;
+  string S[N];
+  string T[M];
+  rep(i,N) cin>>S[i];
+  rep(i,M) cin>>T[i];
+
+  int t=0;
+  rep(i,N){
+    if(S[i]==T[t]){
+        cout<<"Yes"<<endl;
+        t++;
+    }
+    else cout<<"No"<<endl;
+  }
+
+  return 0;
+}
