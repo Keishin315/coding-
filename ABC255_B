@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+#include<iostream>
+#include <map>
+#include<vector>
+#define rep(i,n) for(int i=0;i<n;i++)
+
+int main(){
+  int N,K;
+  cin>>N>>K;
+  int A[K];
+  rep(i,K) {
+    int a;
+    cin>>a;
+    A[i]=a-1;
+  }
+  int X[N];
+  int Y[N];
+  rep(i,N) cin>>X[i]>>Y[i];
+  
+  long long D[N];
+  rep(i,N) D[i]=1000000000000;
+  rep(n,N){
+    
+    rep(k,K){
+      long long d;
+      d=pow(X[n]-X[A[k]],2)+pow(Y[n]-Y[A[k]],2);
+      if(d==0) D[n]=0;
+      else if(d<D[n]) D[n]=d;
+    }
+    
+  }
+  long long ans=0;
+  rep(i,N){
+    
+    if(D[i]>ans) ans=D[i];
+  }
+  printf("%.12lf\n",sqrt((double)ans));
+  
+  
+  return 0;
+}
