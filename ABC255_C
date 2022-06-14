@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+#include<iostream>
+#include <map>
+#include<vector>
+#define rep(i,n) for(int i=0;i<n;i++)
+#define ll long long
+int main(){
+  ll X,A,D,N;
+  cin>>X>>A>>D>>N;
+  ll mi,ma;
+  if(D<0){
+    mi=A+(N-1)*D;
+    ma=A;
+  }
+  else{
+    mi=A;
+    ma=A+(N-1)*D;
+  }
+  ll ans=0;
+  if(D==0) ans=abs(X-A);
+  else if(mi<=X && X<=ma) ans=min(abs(D)-abs((X-A)%D),abs((X-A)%D));
+  else if(X<mi) ans=mi-X;
+  else if(ma<X) ans=X-ma;
+  
+  cout<<ans;
+  return 0;
+}
