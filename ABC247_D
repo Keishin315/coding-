@@ -1,0 +1,38 @@
+
+#include <iostream>
+#include <vector>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+int main(){
+  int Q;
+  cin>>Q;
+  vector<long long>cylinder;
+  rep(q,Q){
+    int n;
+    cin>>n;
+    if(n==1){
+      long long x,c;
+      cin>>x>>c;
+      cylinder.push_back(x);
+      cylinder.push_back(c);
+    }
+    if(n==2){
+      long long c;
+      cin>>c;
+      long long sum=0;
+      while(c){
+        if(c >= cylinder[1]) {
+          sum+=cylinder[0]*cylinder[1];
+          c -= cylinder[1];
+          cylinder.erase(cylinder.begin(),cylinder.begin()+2);
+        }else {
+          sum+=cylinder[0]*c;
+          cylinder[1]-=c;
+          c=0;
+        }
+      }
+      cout<<sum<<endl;
+    }
+  }
+  return 0;
+}
