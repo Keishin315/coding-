@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+#define rep(i,k,n) for(int i=k;i<n;i++)
+
+bool sos(int x){
+  rep(i,2,x){
+    if(x%i==0) return false;
+  }
+  return true;
+}
+
+int main(){
+  int A,B,C,D;
+  cin>>A>>B>>C>>D;
+  bool ans=0;
+  rep(i,A,B+1){
+    bool flag=1;
+    rep(j,C,D+1){
+      if(sos(i+j)) flag=0;
+    }
+    if(flag) ans=1;
+  }
+  if(ans) cout<<"Takahashi";
+  else cout<<"Aoki";
+  return 0;
+}
