@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+#define rep(i,k,n) for(int i=k;i<n;i++)
+
+int main(){
+  int N,Q;
+  cin>>N;
+  vector<int> A(N);
+  rep(i,0,N) cin>>A[i];
+  cin>>Q;
+  int B[Q];
+  rep(i,0,Q) cin>>B[i];
+  
+  sort(A.begin(),A.end());
+  
+  rep(i,0,Q){
+    auto lb = lower_bound(A.begin(),A.end(),B[i]);
+    int man=abs(B[i]-*lb);
+    if(lb!=A.begin()) man = min(abs(B[i]-*lb),abs(B[i]-*(lb-1)));
+    cout<<man<<endl;
+  }
+  return 0;
+  
+  
+  
+  
+}
