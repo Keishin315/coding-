@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+#define rep(i,k,n) for(int i=k;i<n;i++)
+
+int main(){
+  int N;
+  cin>>N;
+  vector<int>ans;
+  for(int i=(1<<N)-1;i>=0;i--){
+    int sum=0;
+    bool flag=1;
+    rep(j,0,N){
+      if(1<<j & i) sum--;
+      else sum++;
+      if(sum<0) {
+        flag=0;
+        break;
+      }
+    }
+    if(sum!=0) flag=0;
+    if(flag) ans.push_back(i);
+  }
+  
+  for (auto v:ans){
+    for(int j=N-1;j>=0;j--){
+      if((1<<j)&v) cout<<'(';
+      else cout<<')';
+    }
+    cout<<endl;
+  }
+  return 0;
+}
