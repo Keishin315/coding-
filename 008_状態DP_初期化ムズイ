@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+#define rep(i,k,n) for(int i=k;i<n;i++)
+
+int main(){
+  int N;
+  string S;
+  
+  cin>>N>>S;
+  S="X"+S;
+  int dp[1000000][8]={0};
+  rep(i,0,N+1) dp[i][0]=1;
+  string atcoder = "atcoder";
+  
+  rep(i,1,N+1){
+    rep(j,1,8){
+      
+      if(atcoder[j-1]==S[i]) dp[i][j]=dp[i][j]+dp[i-1][j-1];
+      dp[i][j]+=dp[i-1][j];
+      dp[i][j]%=1000000007;
+    }
+  }
+  cout<<dp[N][7];
+  return 0;
+}
