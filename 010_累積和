@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+#define rep(i,k,n) for(int i=k;i<n;i++)
+
+int main(){
+  int N;
+  cin>>N;
+  int C[N+1];
+  int P[N+1];
+  rep(i,1,N+1){
+    cin>>C[i]>>P[i];
+  }
+  int Q;
+  cin>>Q;
+  int L[Q];
+  int R[Q];
+  rep(q,0,Q) cin>>L[q]>>R[q];
+  
+  int sum1[N+1];
+  int sum2[N+1];
+
+  sum1[0]=0;
+  sum2[0]=0;
+
+  rep(i,1,N+1){
+      if(C[i]==1) {
+          sum1[i]=sum1[i-1]+P[i];
+          sum2[i]=sum2[i-1];
+      }
+      else{
+          sum2[i]=sum2[i-1]+P[i];
+          sum1[i]=sum1[i-1];
+      }
+  }
+
+  rep(j,0,Q){
+      cout<<sum1[R[j]]-sum1[L[j]-1]<<' '<<sum2[R[j]]-sum2[L[j]-1]<<endl;
+  }
+
+  return 0;
+}
