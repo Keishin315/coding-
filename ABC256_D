@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n,k) for(int i=n;i<k;i++)
+int main(){
+  int N;
+  cin>>N;
+  vector<pair<int,int> > a;
+  
+  rep(i,0,N){
+    int l,r;
+    cin>>l>>r;
+    a.push_back(make_pair(l,-1));
+    a.push_back(make_pair(r,1));
+  }
+  sort(a.begin(),a.end());
+  int ans=0;
+  rep(i,0,2*N){
+    if(ans==0) {
+      cout<<a[i].first<<' ';
+      ans--;
+    }
+    else{
+      ans+=a[i].second;
+      if(ans==0) cout<<a[i].first<<endl;
+    }
+  }
+  
+  return 0;
+}
