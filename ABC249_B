@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n,k) for(int i=n;i<k;i++)
+bool judge(char s){
+  if(s>='a' and s<='z')return 0;
+  else return 1;
+}
+int main(){
+  string S;
+  cin>>S;
+  map<char,int> b;
+  bool Flag=0;
+  bool flag=0;
+  rep(i,0,S.length()){
+    if(judge(S[i])) Flag=1;
+    else flag=1;
+    b.insert({S[i],1});
+  }
+  bool f=1;
+  if(b.size()!=S.length()) f=0;
+  if(Flag&&flag&&f) cout<<"Yes";
+  else cout<<"No";
+  return 0;
+}
