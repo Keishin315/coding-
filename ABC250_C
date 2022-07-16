@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n,k) for(int i=n;i<k;i++)
+
+int main(){
+  int N,Q;
+  cin>>N>>Q;
+  
+  int p[200001];
+  int q[200001];
+  rep(i,1,N+1) p[i]=i-1;
+  rep(i,0,N) {
+    q[i]=i+1;
+  }
+  rep(i,0,Q){
+    int x;
+    cin>>x;
+    if(p[x]==N-1){
+      p[x]-=1;
+      p[q[p[x]]]++;
+      swap(q[p[x]],q[p[x]+1]);
+    }
+    else{
+      p[x]+=1;
+      p[q[p[x]]]--;
+      swap(q[p[x]],q[p[x]-1]);
+    }
+  }
+  rep(i,0,N) cout<<q[i]<<' ';
+  return 0;
+}
