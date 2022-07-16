@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n,k) for(int i=n;i<k;i++)
+
+int main(){
+  int N;
+  cin>>N;
+  string S[101];
+  rep(i,0,N) cin>>S[i];
+  int ans=1000000000;
+  rep(j2,0,10){
+    char j=j2+'0';
+    bool flag[101]={0};
+    int time=0;
+    rep(t,0,1000){
+      
+    	rep(i,0,N){
+      	  if(flag[i]==1) continue;
+      	  if(S[i][t%10]==j){
+            flag[i]=1;
+            time=t;
+            break;
+          }
+        }
+    }
+    ans=min(ans,time);
+  }
+  cout<<ans;
+  return 0;
+}
