@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n,k) for(int i=n;i<k;i++)
+#define ll long long
+int main(){
+  ll N,K;
+  cin>>N>>K;
+  
+  ll k=K;
+  ll rK=0;
+  while(k){
+    rK*=10;
+    rK+=k%10;
+    k/=10;
+  }
+  if(K>rK){
+    cout<<0;
+    return 0;
+  }
+  bool flag=(K==rK);
+  int ans=0;
+  while(N>=K){
+    ans++;
+    K*=10;
+  }
+  while(N>=rK){
+    ans++;
+    rK*=10;
+  }
+  if(flag)ans/=2;
+  cout<<ans;
+  
+  return 0;
+}
