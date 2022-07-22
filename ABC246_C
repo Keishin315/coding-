@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n,k) for(int i=n;i<k;i++)
+
+int main(){
+  long long N,K,X;
+  cin>>N>>K>>X;
+  vector<pair<long long,long long> >A;
+  rep(i,0,N){
+    long long n;
+    cin>>n;
+    A.push_back({-(n%X),n});
+  }
+  sort(A.begin(),A.end());
+  int count=0;
+  long long kn=K;
+  long long ans=0;
+  while(count!=N){
+    int ma=A[count].second/X;
+    if(ma<=kn){
+      kn-=ma;
+      ans+=A[count].second%X;
+    }
+    else{
+      ans+=A[count].second-X*kn;
+      kn=0;
+    }
+    count++;
+  }
+  count=0;
+  while(count!=N){
+    if(1<=kn){
+      kn-=1;
+      ans-=A[count].second%X;
+    }
+    count++;
+  }
+  
+  cout<<ans;
+  return 0;
+  
+}
