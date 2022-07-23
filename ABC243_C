@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n,k) for(int i=n;i<k;i++)
+
+int main(){
+  int N;
+  cin>>N;
+  int X[1000000],Y[1000000];
+  rep(i,0,N) cin>>X[i]>>Y[i];
+  string s;
+  cin>>s;
+  bool flag=0;
+  map<int,pair<int,int> > xy;
+  rep(i,0,N){
+    if(xy.find(Y[i])==xy.end()){
+      xy.insert({Y[i],{1000000001,0}});
+      if(s[i]=='R') xy[Y[i]].first=X[i];
+      else xy[Y[i]].second=X[i];
+    }
+    else{
+      if(s[i]=='R') xy[Y[i]].first=min(xy[Y[i]].first,X[i]);
+      else xy[Y[i]].second=max(xy[Y[i]].second,X[i]);
+      if((xy[Y[i]].second-xy[Y[i]].first)>0) flag=1;
+    }
+  }
+    
+  if(flag) cout<<"Yes";
+  else cout<<"No";
+    
+  return 0;
+}
