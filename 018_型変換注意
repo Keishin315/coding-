@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,k,n) for(int i=k;i<n;i++)
+#define ll long long
+int main(){
+  int T,L,X,Y,Q;
+  cin>>T>>L>>X>>Y>>Q;
+  
+  rep(i,0,Q){
+    double e;
+    cin>>e;
+    double rad=(e/T)*2*M_PI;
+    double y=-(L/2.0)*sin(rad);
+    double z=(L/2.0)*(1-cos(rad));
+    double ans=atan2(z,hypot(X,Y-y));
+    
+    cout<<fixed<<setprecision(8)<<ans/M_PI*180<<endl;
+  }
+  
+  return 0;
+}
